@@ -11,9 +11,4 @@ public class WxToken {
     private String errcode; // 错误码
     private String errmsg; // 错误信息
 
-    @Override
-    public String toString() {
-        return "openid="+openid+"\nsession_key="+session_key+"\nunionid="+unionid+"\nerrcode="+errcode+"\nerrmsg="+errmsg;
-    }
-
 }
