@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -35,14 +37,14 @@ public class UserController extends MappingJackson2HttpMessageConverter {
 
         String appid = ""; // 写自己的小程序appid
         String secret = ""; // 写自己的小程序secret
+        String grant_type = "authorization_code";
 
-        String url = "https://api.weixin.qq.com/sns/jscode2session?appid="+appid+"&secret="+secret+"&grant_type=authorization_code&js_code="+js_code;
+        String url = "https://api.weixin.qq.com/sns/jscode2session?appid="+appid+"&secret="+secret+"&grant_type="+grant_type+"&js_code="+js_code;
 
         restTemplate.getMessageConverters().add(new WxMappingJackson2HttpMessageConverter());
 
         WxToken wxToken = restTemplate.getForObject(url, WxToken.class);
 
-        System.out.println(wxToken);
         return wxToken;
 
     }
