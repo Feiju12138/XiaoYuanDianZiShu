@@ -48,7 +48,7 @@ public interface BookMapper {
     @Insert("INSERT INTO book_history VALUES (null, #{user_id}, #{book_id}, #{section_id})")
     Integer addHistory(String user_id, Integer book_id, Integer section_id);
 
-    @Update("UPDATE book_history SET section_id=#{section_id} WHERE user_id=#{user_id} AND book_id=#{book_id}")
+    @Update("UPDATE book_info SET section_id=#{section_id} WHERE user_id=#{user_id} AND book_id=#{book_id}")
     Integer updateHistory(String user_id, Integer book_id, Integer section_id);
 
     @Select("SELECT book_info.id, sort_id, sort.name AS sort_name, title, author, details, img_url, see FROM book_info, sort WHERE book_info.sort_id=sort.id AND book_info.title LIKE '%${keyword}%'")
